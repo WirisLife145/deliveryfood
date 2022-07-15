@@ -15,13 +15,8 @@ class HomePage extends StatelessWidget {
         child: Text('Cerrar sesion',
           style:TextStyle(
             color: Colors.black,
-
           ),
-
-
-
         ),
-
       ),
       ),
     );

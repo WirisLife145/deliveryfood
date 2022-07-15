@@ -34,28 +34,32 @@ class RolesPage extends StatelessWidget {
   }
 
   Widget _carRol(Rol rol){
-    return Column(
-      children: [
-        Container(//imagen
-          margin:EdgeInsets.only(bottom: 15) ,
+    return  GestureDetector(
+      onTap:()=> con.goToPageRol(rol),
+
+      child: Column(
+        children: [
+          Container(//imagen
+            margin:EdgeInsets.only(bottom: 20) ,
 
 
-          height:130,
-          child: FadeInImage(
-            image: NetworkImage(rol.image!),
-            fit: BoxFit.contain,
-            fadeInDuration:Duration(milliseconds :50) ,
-            placeholder: AssetImage('assets/img/no-image.png'),
+            height:120,
+            child: FadeInImage(
+              image: NetworkImage(rol.image!),
+              fit: BoxFit.contain,
+              fadeInDuration:Duration(milliseconds :50) ,
+              placeholder: AssetImage('assets/img/no-image.png'),
+            ),
           ),
-        ),
-        Text(
-          rol.name??'',
-          style: TextStyle(
-            fontSize: 16,
-            color: Colors.black
-          ),
-        )
-      ],
+          Text(
+            rol.name??'',
+            style: TextStyle(
+              fontSize: 16,
+              color: Colors.black
+            ),
+          )
+        ],
+      ),
     );
   }
 

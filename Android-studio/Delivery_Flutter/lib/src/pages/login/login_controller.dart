@@ -6,8 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
+import '../../models/user.dart';
+
 
 class LoginController extends GetxController{
+
+  User user = User.fromJson(GetStorage().read('user') ?? {});
+
   TextEditingController emailController= TextEditingController();
   TextEditingController passwordController= TextEditingController();
 
@@ -20,32 +25,42 @@ class LoginController extends GetxController{
     Get.toNamed('/register');
   }
 
-  void login() async{
-    String email=emailController.text.trim();
-    String password=passwordController.text.trim();
+  void login() async {
+    String email = emailController.text.trim();
+    String password = passwordController.text.trim();
+
     print('Email ${email}');
     print('Password ${password}');
 
-    
-   if(isValidForm(email, password)){
+    if (isValidForm(email, password)) {
 
-     ResponseApi responseApi=await usersProvider.login(email, password);
-     print('ResponseApi: ${responseApi.toJson()}');
-      if (responseApi.success==true){
+      ResponseApi responseApi = await usersProvider.login(email, password);
 
-        GetStorage().write('user', responseApi.data);//datos de usuario
-        //goToHomePage();
-        goToRolesPage();
+      print('Response Api: ${responseApi.toJson()}');
+
+      if (responseApi.success == true) {
+        GetStorage().write('user', responseApi.data); // DATOS DEL USUARIO EN SESION
+        User myUser = User.fromJson(GetStorage().read('user') ?? {});
+
+        print('Roles length: ${myUser.roles!.length}');
+
+        if (myUser.roles!.length > 1) {
+          goToRolesPage();
+        }
+        
+        else { // SOLO UN ROL
+          goToClientProductPage();
+        }
 
       }
-      else{
-        Get.snackbar('Login fallido', responseApi.message?? '');
+      else {
+        Get.snackbar('Login fallido', responseApi.message ?? '');
       }
-   }
+    }
   }
 
-  void goToHomePage(){
-    Get.offNamedUntil('/home', (route) => false);
+  void goToClientProductPage(){
+    Get.offNamedUntil('/client/products/list', (route) => false);
 
   }
 
