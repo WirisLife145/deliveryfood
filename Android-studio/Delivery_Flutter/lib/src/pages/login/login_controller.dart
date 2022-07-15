@@ -47,7 +47,7 @@ class LoginController extends GetxController{
         if (myUser.roles!.length > 1) {
           goToRolesPage();
         }
-        
+
         else { // SOLO UN ROL
           goToClientProductPage();
         }
