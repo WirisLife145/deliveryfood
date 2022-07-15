@@ -16,7 +16,6 @@ class LoginController extends GetxController{
 
 
 
-
   void goToRegisterPage(){
     Get.toNamed('/register');
   }
@@ -35,7 +34,9 @@ class LoginController extends GetxController{
       if (responseApi.success==true){
 
         GetStorage().write('user', responseApi.data);//datos de usuario
-        goToHomePage();
+        //goToHomePage();
+        goToRolesPage();
+
       }
       else{
         Get.snackbar('Login fallido', responseApi.message?? '');
@@ -47,6 +48,12 @@ class LoginController extends GetxController{
     Get.offNamedUntil('/home', (route) => false);
 
   }
+
+  void goToRolesPage(){
+    Get.offNamedUntil('/roles', (route) => false);
+
+  }
+
 
   bool isValidForm(String  email, String password){
 

@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'package:delivery_flutter/src/models/Rol.dart';
+
 User userFromJson(String str) => User.fromJson(json.decode(str));
 
 String userToJson(User data) => json.encode(data.toJson());
@@ -17,6 +19,7 @@ class User {
   String? image;
   String? password;
   String? sessionToken;
+  List<Rol>? roles=[];
 
 
   User({
@@ -27,7 +30,8 @@ class User {
     this.phone,
     this.image,
     this.password,
-    this.sessionToken
+    this.sessionToken,
+    this.roles
 
   });
 
@@ -42,6 +46,8 @@ class User {
     image: json["image"],
     password: json["password"],
     sessionToken: json["session_token"],
+    roles: json["roles"]== null? []:List<Rol>.from(json["roles"].map((model)=> Rol.fromJson(model))),
+
   );
 
   Map<String, dynamic> toJson() => {
@@ -52,6 +58,8 @@ class User {
     "phone": phone,
     "image": image,
     "password": password,
-    "session_token": sessionToken
+    "session_token": sessionToken,
+    'roles': roles
+
   };
 }
