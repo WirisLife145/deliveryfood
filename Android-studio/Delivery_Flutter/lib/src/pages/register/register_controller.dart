@@ -23,9 +23,6 @@ class RegisterController extends GetxController{
   File? imageFile;
 
 
-
-
-
   void register(BuildContext context) async {
     String email=emailController.text.trim();
     String name=nameController.text;

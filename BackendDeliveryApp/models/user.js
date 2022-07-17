@@ -3,10 +3,11 @@ const bcrypt= require('bcryptjs');
 
 const User = {};
 
+
 User.findById=(id,result) => {
     const sql =`
     SELECT
-    U.id,
+    CONVERT(U.id, CHAR) as id,
     U.email,
     U.name,
     U.lastname,
@@ -34,7 +35,7 @@ ON
     UHR.id_rol=R.id
     
 WHERE
-    id=?
+    U.id=?
 group by
 U.id
     `;
@@ -113,10 +114,6 @@ User.findByEmail=(email,result) => {
 }
 
 
-
-
-
-
 User.create = async(user, result) => {
 
 
@@ -157,6 +154,84 @@ User.create = async(user, result) => {
             else {
                 console.log('Id del nuevo usuario:', res.insertId);
                 result(null, res.insertId);
+            }
+        }
+    )
+
+}
+
+User.update=(user,result)=>{
+
+    const sql=`
+    UPDATE
+        users
+    SET
+        name= ?,
+        lastname= ?,
+        phone= ?,
+        image= ?,
+        updated_at= ?
+    WHERE
+        id=?    
+    `;
+
+    db.query
+    (
+        sql,
+        [
+            user.name,
+            user.lastname,
+            user.phone,
+            user.image,
+            new Date(),
+            user.id
+        ],
+        (err, res) => {
+            if (err) {
+                console.log('Error:', err);
+                result(err, null);
+            }
+            else {
+                console.log('Usuario Actualizado:',  user.id);
+                result(null, user.id);
+            }
+        }
+    )
+
+}
+
+User.updateWithoutImage=(user,result)=>{
+
+    const sql=`
+    UPDATE
+        users
+    SET
+        name= ?,
+        lastname= ?,
+        phone= ?,
+        updated_at= ?
+    WHERE
+        id=?    
+    `;
+
+    db.query
+    (
+        sql,
+        [
+            user.name,
+            user.lastname,
+            user.phone,
+            new Date(),
+            user.id
+        ],
+        (err, res) => {
+            if (err) {
+                console.log('Error:', err);
+                result(err, null);
+            }
+            else {
+                console.log('Usuario Actualizado:',  user.id);
+                result(null, user.id);
             }
         }
     )
