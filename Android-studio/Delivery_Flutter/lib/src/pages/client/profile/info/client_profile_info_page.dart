@@ -102,19 +102,6 @@ class ClientProfileInfoPage extends StatelessWidget {
 
   Widget _imageUser(BuildContext context){
 
-    return SafeArea(
-      child: Container(
-        margin: EdgeInsets.only(top: 30),
-        alignment:Alignment.topCenter ,
-        child: CircleAvatar(
-            backgroundImage: con.user.value.image !=null
-                ? NetworkImage(con.user.value.image!)
-                : AssetImage('assets/img/User_profile.png') as ImageProvider,
-            radius: 70,
-            backgroundColor: Colors.white,
-        ),
-      ),
-    );
 
   }
 
