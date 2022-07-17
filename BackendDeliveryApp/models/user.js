@@ -7,7 +7,7 @@ const User = {};
 User.findById=(id,result) => {
     const sql =`
     SELECT
-    CONVERT(U.id, CHAR) as id,
+    CONVERT(U.id, CHAR),
     U.email,
     U.name,
     U.lastname,
