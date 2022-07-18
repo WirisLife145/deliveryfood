@@ -102,6 +102,19 @@ class ClientProfileInfoPage extends StatelessWidget {
 
   Widget _imageUser(BuildContext context){
 
+    return SafeArea(
+      child: Container(
+        margin: EdgeInsets.only(top: 30),
+        alignment:Alignment.topCenter ,
+        child: CircleAvatar(
+            backgroundImage: con.user.value.image !=null
+                ? NetworkImage(con.user.value.image!)
+                : AssetImage('assets/img/User_profile.png') as ImageProvider,
+            radius: 70,
+            backgroundColor: Colors.white,
+        ),
+      ),
+    );
 
   }
 
@@ -110,7 +123,7 @@ class ClientProfileInfoPage extends StatelessWidget {
       margin: EdgeInsets.only(top: 15),
       child: ListTile(
         leading: Icon(Icons.person),
-        title:Text( '${con.user.value.name ?? ''}  ${con.user.value.lastname ?? ''} '),
+        title:Text( '${con.user.value.name?? ''}${con.user.value.lastname ?? ''} '),
         subtitle: Text('Nombre del Usuario'),
       ),
     );
