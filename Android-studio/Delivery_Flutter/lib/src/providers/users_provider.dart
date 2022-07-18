@@ -9,10 +9,9 @@ import 'package:delivery_flutter/src/models/user.dart';
 import 'package:get/get.dart';
 
 class UsersProvider extends GetConnect{
+
   String url= Environment.API_URL + 'api/users';
   User userSession=User.fromJson(GetStorage().read('user')??{});
-
-
 
 
   Future<Response>create(User user) async{

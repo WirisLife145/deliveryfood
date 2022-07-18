@@ -1,6 +1,10 @@
+import 'package:delivery_flutter/src/pages/restaurant/categories/create/restaurant_categories_create_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class RestaurantCategoriesCreatePage extends StatelessWidget {
+  RestaurantCategoriesCreateController con=Get.put(RestaurantCategoriesCreateController());
+
   @override
   Widget build(BuildContext context) {
 
@@ -50,7 +54,7 @@ class RestaurantCategoriesCreatePage extends StatelessWidget {
             _textYourInfo(),
             _textFieldName(),
             _textFieldDescription(),
-            _buttonUpdate(context)
+            _buttonCreate(context)
           ],
         ),
       )
@@ -63,7 +67,7 @@ class RestaurantCategoriesCreatePage extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 40),
       child: TextField(
-        //controller: con.nameController,
+        controller: con.nameController,
         keyboardType: TextInputType.text,
         decoration: InputDecoration(
             hintText: 'Name',
@@ -77,8 +81,7 @@ class RestaurantCategoriesCreatePage extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 40 ,vertical:30 ),
       child: TextField(
-        // controller:con.lastnameController,
-
+         controller:con.descriptionController,
         keyboardType: TextInputType.text,
         maxLines: 4,
         decoration: InputDecoration(
@@ -94,12 +97,12 @@ class RestaurantCategoriesCreatePage extends StatelessWidget {
 
 
 
-  Widget _buttonUpdate (BuildContext context){
+  Widget _buttonCreate (BuildContext context){
     return Container(
       width: double.infinity,
       margin: EdgeInsets.symmetric(horizontal: 40,vertical: 10),
       child: ElevatedButton(
-          onPressed: () =>{},
+          onPressed: () => con.createCategory() ,
           style: ElevatedButton.styleFrom(
               padding: EdgeInsets.symmetric(vertical: 15)
 
