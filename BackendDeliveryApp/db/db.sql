@@ -78,3 +78,12 @@ foreign key(id_rol) references roles(id) on update cascade ON delete cascade,
 primary key(id_user, id_rol)
 
 );
+
+create table categories(
+id bigint primary key auto_increment,
+name varchar(100)NOT NULL,
+description Text NOT NULL,
+created_at timestamp(0) Not Null,
+updated_at timestamp(0) Not Null
+)
+
