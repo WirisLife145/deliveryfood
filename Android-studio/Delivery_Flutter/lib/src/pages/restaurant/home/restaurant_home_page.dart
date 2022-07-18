@@ -23,8 +23,8 @@ class RestaurantHomePage extends StatelessWidget {
         body: Obx(() => IndexedStack(
           index: con.indexTab.value,
           children: [
-            RestaurantCategoriesCreatePage(),
             RestaurantOrdersListPage(),
+            RestaurantCategoriesCreatePage(),
             DeliveryOrdersListPage(),
             ClientProfileInfoPage()
           ],
@@ -43,21 +43,21 @@ class RestaurantHomePage extends StatelessWidget {
       onItemSelected: (index) => con.changeTab(index),
       items: [
         BottomNavyBarItem(
-            icon: Icon(Icons.apps),
+            icon: Icon(Icons.list),
             title: Text('Pedidos'),
             activeColor: Colors.white,
             inactiveColor: Colors.black
         ),
         BottomNavyBarItem(
-            icon: Icon(Icons.list),
-            title: Text('Crear Categorias'),
+            icon: Icon(Icons.category),
+            title: Text('Categoria'),
             activeColor: Colors.white,
             inactiveColor: Colors.black
         ),
 
         BottomNavyBarItem(
-            icon: Icon(Icons.list),
-            title: Text('Crear Producto'),
+            icon: Icon(Icons.restaurant),
+            title: Text('Producto'),
             activeColor: Colors.white,
             inactiveColor: Colors.black
         ),
