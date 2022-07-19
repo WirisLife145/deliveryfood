@@ -88,14 +88,14 @@ class RestaurantProductsCreatePage extends StatelessWidget {
 
   Widget _dropDownCategories(List<Category> categories) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 30),
+      padding: EdgeInsets.symmetric(horizontal: 50),
       margin: EdgeInsets.only(top: 15),
-      child:DropdownButton(
+      child: DropdownButton(
         underline: Container(
           alignment: Alignment.centerRight,
           child: Icon(
             Icons.arrow_drop_down_circle,
-            color: Colors.deepOrange,
+            color: Colors.amber,
           ),
         ),
         elevation: 3,
@@ -108,16 +108,16 @@ class RestaurantProductsCreatePage extends StatelessWidget {
           ),
         ),
         items: _dropDownItems(categories),
+        value: con.idCategory.value == '' ? null : con.idCategory.value,
         onChanged: (option) {
           print('Opcion seleccionada ${option}');
-          con.idCategory=option.toString();
+          con.idCategory.value = option.toString();
         },
       ),
     );
   }
 
-
-  List<DropdownMenuItem<String?>> _dropDownItems(List<Category> categories) {
+  List<DropdownMenuItem<String>> _dropDownItems(List<Category> categories) {
     List<DropdownMenuItem<String>> list = [];
     categories.forEach((category) {
       list.add(DropdownMenuItem(
@@ -207,7 +207,7 @@ class RestaurantProductsCreatePage extends StatelessWidget {
       width: double.infinity,
       margin: EdgeInsets.symmetric(horizontal: 40,vertical: 10),
       child: ElevatedButton(
-          onPressed: () => con.createCategory() ,
+          onPressed: () => con.createProduct(context),
           style: ElevatedButton.styleFrom(
               padding: EdgeInsets.symmetric(vertical: 15)
 
