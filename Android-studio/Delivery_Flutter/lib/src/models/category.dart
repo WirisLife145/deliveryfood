@@ -16,12 +16,28 @@ class Category {
     this.description,
   });
 
-
   factory Category.fromJson(Map<String, dynamic> json) => Category(
     id: json["id"],
     name: json["name"],
     description: json["description"],
   );
+
+  static List<Category>fromJsonList(List<dynamic> jsonList){
+    List<Category> toList=[];
+
+    jsonList.forEach((item) {
+      Category category=Category.fromJson(item);
+      toList.add(category);
+
+    });
+    return toList;
+
+  }
+
+
+
+
+
 
   Map<String, dynamic> toJson() => {
     "id": id,
