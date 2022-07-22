@@ -12,23 +12,20 @@ import 'package:sn_progress_dialog/sn_progress_dialog.dart';
 
 
 class RestaurantProductsCreateController extends GetxController{
+  TextEditingController nameController = TextEditingController();
+  TextEditingController descriptionController = TextEditingController();
+  TextEditingController priceController = TextEditingController();
+  CategoriesProvider categoriesProvider = CategoriesProvider();
 
-
-  TextEditingController nameController=TextEditingController();
-  TextEditingController descriptionController=TextEditingController();
-  TextEditingController priceController=TextEditingController();
-  CategoriesProvider categoriesProvider= CategoriesProvider();
-
-
-  ImagePicker picker =ImagePicker();
+  ImagePicker picker = ImagePicker();
   File? imageFile1;
   File? imageFile2;
   File? imageFile3;
 
-
   var idCategory = ''.obs;
   List<Category> categories = <Category>[].obs;
   ProductsProvider productsProvider=ProductsProvider();
+
 
   RestaurantProductsCreateController() {
     getCategories();
@@ -39,7 +36,6 @@ class RestaurantProductsCreateController extends GetxController{
     categories.clear();
     categories.addAll(result);
   }
-
 
   void createProduct(BuildContext context) async {
 
@@ -59,7 +55,6 @@ class RestaurantProductsCreateController extends GetxController{
           price: double.parse(price),
           idCategory: idCategory.value
       );
-
       progressDialog.show(max: 100, msg: 'Espere un momento...');
 
       List<File> images = [];
@@ -115,76 +110,71 @@ class RestaurantProductsCreateController extends GetxController{
     return true;
   }
 
-  Future selectImage(ImageSource imageSource,int numberFile ) async{
-    XFile? image =await picker.pickImage(source: imageSource);
-    if(image != null){
+  Future selectImage(ImageSource imageSource, int numberFile) async {
+    XFile? image = await picker.pickImage(source: imageSource);
+    if (image != null) {
 
-      if(numberFile==1){
-        imageFile1 =File(image.path);
+      if (numberFile == 1) {
+        imageFile1 = File(image.path);
       }
-      else if(numberFile==2){
-        imageFile2 =File(image.path);
+      else if (numberFile == 2) {
+        imageFile2 = File(image.path);
       }
-      else if(numberFile==3){
-        imageFile3 =File(image.path);
+      else if (numberFile == 3) {
+        imageFile3 = File(image.path);
       }
+
       update();
     }
-
   }
 
-  void showAlertDialog(BuildContext context,int numberFile){
-    Widget gallaryButton=ElevatedButton(
-        onPressed:(){
+  void showAlertDialog(BuildContext context, int numberFile) {
+    Widget galleryButton = ElevatedButton(
+        onPressed: () {
           Get.back();
           selectImage(ImageSource.gallery, numberFile);
         },
-        child: Text('Galeria',
+        child: Text(
+          'GALERIA',
           style: TextStyle(
               color: Colors.black
           ),
         )
     );
-
-    Widget cameraButton =ElevatedButton(
-        onPressed:(){
+    Widget cameraButton = ElevatedButton(
+        onPressed: () {
           Get.back();
           selectImage(ImageSource.camera, numberFile);
         },
         child: Text(
-          'Camara',
+          'CAMARA',
           style: TextStyle(
               color: Colors.black
           ),
         )
     );
 
-    AlertDialog alertDialog= AlertDialog(
-      title:Text('Seleciona una opcion'),
+    AlertDialog alertDialog = AlertDialog(
+      title: Text('Selecciona una opcion'),
       actions: [
-        gallaryButton,
+        galleryButton,
         cameraButton
       ],
     );
-    showDialog(context: context, builder: (BuildContext context){
+
+    showDialog(context: context, builder: (BuildContext context) {
       return alertDialog;
-
     });
-
   }
 
-
-
-
-  void clearForm(){
-    nameController.text='';
-    descriptionController.text='';
-    priceController.text='';
+  void clearForm() {
+    nameController.text = '';
+    descriptionController.text = '';
+    priceController.text = '';
     imageFile1 = null;
     imageFile2 = null;
     imageFile3 = null;
     idCategory.value = '';
     update();
-
   }
   }

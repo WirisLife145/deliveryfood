@@ -95,7 +95,7 @@ class RestaurantProductsCreatePage extends StatelessWidget {
           alignment: Alignment.centerRight,
           child: Icon(
             Icons.arrow_drop_down_circle,
-            color: Colors.amber,
+            color: Colors.deepOrange,
           ),
         ),
         elevation: 3,

@@ -30,8 +30,6 @@ class RestaurantCategoriesCreatePage extends StatelessWidget {
   }
 
 
-
-
   Widget _boxForm(BuildContext context){
     return Container(
       height: MediaQuery.of(context).size.height * 0.45,
@@ -151,7 +149,6 @@ class RestaurantCategoriesCreatePage extends StatelessWidget {
         'INGRESA TU INFORMACION',
         style: TextStyle(
             color: Colors.black
-
         ),
       ),
     );

@@ -27,12 +27,8 @@ class RestaurantCategoriesCreateController extends GetxController{
       Get.snackbar('Proceso Terminado', responseApi.message ?? '');
       if(responseApi.success=true){
         clearForm();
-
       }
 
-
-
-      
     }
     else {
         Get.snackbar('Formulario no valido', 'Ingresa todos los campos para crear la categoria');
@@ -42,6 +38,5 @@ class RestaurantCategoriesCreateController extends GetxController{
   void clearForm(){
     nameController.text='';
     descriptionController.text='';
-
   }
   }

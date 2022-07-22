@@ -16,7 +16,6 @@ class CategoriesProvider extends GetConnect{
   User userSession=User.fromJson(GetStorage().read('user')??{});
 
 
-
   Future<List<Category>>getAll() async{
     Response response=await get(
         '$url/getAll',
@@ -28,10 +27,9 @@ class CategoriesProvider extends GetConnect{
 
     if(response.statusCode ==401){
       Get.snackbar('Peticion Denegada', 'Tu usuario no tiene permitido leer esta informacion');
-
+      return[];
     }
     List<Category> categories =Category.fromJsonList(response.body);
-
     return categories;
   }
 
