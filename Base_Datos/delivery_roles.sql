@@ -16,30 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `categories`
+-- Table structure for table `roles`
 --
 
-DROP TABLE IF EXISTS `categories`;
+DROP TABLE IF EXISTS `roles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `categories` (
+CREATE TABLE `roles` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
-  `description` text NOT NULL,
+  `name` varchar(90) NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `route` varchar(180) NOT NULL,
   `created_at` timestamp NOT NULL,
   `updated_at` timestamp NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `categories`
+-- Dumping data for table `roles`
 --
 
-LOCK TABLES `categories` WRITE;
-/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES (1,'Bebidas','Selecciona tu bebida preferida para acompañar tu comida ','2022-07-18 14:29:43','2022-07-18 14:29:43'),(2,'Postres ','Sección de postres ','2022-07-19 07:18:07','2022-07-19 07:18:07');
-/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
+LOCK TABLES `roles` WRITE;
+/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
+INSERT INTO `roles` VALUES (1,'RESTAURANTE','https://firebasestorage.googleapis.com/v0/b/delivery-e5e9e.appspot.com/o/restaurant.png?alt=media&token=c249fe34-af5c-436c-81c0-36010e9858a9','/restaurant/home','2022-07-13 05:00:00','2022-07-13 05:00:00'),(2,'REPARTIDOR','https://firebasestorage.googleapis.com/v0/b/delivery-e5e9e.appspot.com/o/delivery.png?alt=media&token=42d8771c-dcd0-45a5-ae8e-f2ea1dda8e65','/delivery/home','2022-07-13 05:00:00','2022-07-13 05:00:00'),(3,'CLIENTE','https://firebasestorage.googleapis.com/v0/b/delivery-e5e9e.appspot.com/o/cliente.png?alt=media&token=ba2eda64-e29d-4831-b2be-88263747cbf7','/client/home','2022-07-13 05:00:00','2022-07-13 05:00:00');
+/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-19 18:13:19
+-- Dump completed on 2022-07-22 15:45:03

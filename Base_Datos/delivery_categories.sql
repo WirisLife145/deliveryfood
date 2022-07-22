@@ -16,32 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `user_has_roles`
+-- Table structure for table `categories`
 --
 
-DROP TABLE IF EXISTS `user_has_roles`;
+DROP TABLE IF EXISTS `categories`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user_has_roles` (
-  `id_user` bigint NOT NULL,
-  `id_rol` bigint NOT NULL,
+CREATE TABLE `categories` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `description` text NOT NULL,
   `created_at` timestamp NOT NULL,
   `updated_at` timestamp NOT NULL,
-  PRIMARY KEY (`id_user`,`id_rol`),
-  KEY `id_rol` (`id_rol`),
-  CONSTRAINT `user_has_roles_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `user_has_roles_ibfk_2` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user_has_roles`
+-- Dumping data for table `categories`
 --
 
-LOCK TABLES `user_has_roles` WRITE;
-/*!40000 ALTER TABLE `user_has_roles` DISABLE KEYS */;
-INSERT INTO `user_has_roles` VALUES (1,3,'2022-07-13 08:33:48','2022-07-13 08:33:48'),(3,1,'2022-07-13 19:18:50','2022-07-13 19:18:50'),(3,2,'2022-07-13 19:18:50','2022-07-13 19:18:50'),(3,3,'2022-07-13 17:02:26','2022-07-13 17:02:26'),(6,3,'2022-07-15 09:13:07','2022-07-15 09:13:07');
-/*!40000 ALTER TABLE `user_has_roles` ENABLE KEYS */;
+LOCK TABLES `categories` WRITE;
+/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
+INSERT INTO `categories` VALUES (1,'Bebidas','Selecciona tu bebida preferida para acompañar tu comida ','2022-07-18 14:29:43','2022-07-18 14:29:43'),(2,'Postres ','Sección de postres ','2022-07-19 07:18:07','2022-07-19 07:18:07'),(11,'Hamburguesas ','en esta sección presentamos las hamburguesas ','2022-07-22 17:42:35','2022-07-22 17:42:35');
+/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-19 18:13:19
+-- Dump completed on 2022-07-22 15:45:02

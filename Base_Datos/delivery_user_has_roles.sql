@@ -16,32 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `roles`
+-- Table structure for table `user_has_roles`
 --
 
-DROP TABLE IF EXISTS `roles`;
+DROP TABLE IF EXISTS `user_has_roles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `roles` (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `name` varchar(90) NOT NULL,
-  `image` varchar(255) DEFAULT NULL,
-  `route` varchar(180) NOT NULL,
+CREATE TABLE `user_has_roles` (
+  `id_user` bigint NOT NULL,
+  `id_rol` bigint NOT NULL,
   `created_at` timestamp NOT NULL,
   `updated_at` timestamp NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`id_user`,`id_rol`),
+  KEY `id_rol` (`id_rol`),
+  CONSTRAINT `user_has_roles_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `user_has_roles_ibfk_2` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `roles`
+-- Dumping data for table `user_has_roles`
 --
 
-LOCK TABLES `roles` WRITE;
-/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
-INSERT INTO `roles` VALUES (1,'RESTAURANTE','https://firebasestorage.googleapis.com/v0/b/delivery-e5e9e.appspot.com/o/restaurant.png?alt=media&token=c249fe34-af5c-436c-81c0-36010e9858a9','/restaurant/home','2022-07-13 05:00:00','2022-07-13 05:00:00'),(2,'REPARTIDOR','https://firebasestorage.googleapis.com/v0/b/delivery-e5e9e.appspot.com/o/delivery.png?alt=media&token=42d8771c-dcd0-45a5-ae8e-f2ea1dda8e65','/delivery/home','2022-07-13 05:00:00','2022-07-13 05:00:00'),(3,'CLIENTE','https://firebasestorage.googleapis.com/v0/b/delivery-e5e9e.appspot.com/o/cliente.png?alt=media&token=ba2eda64-e29d-4831-b2be-88263747cbf7','/client/home','2022-07-13 05:00:00','2022-07-13 05:00:00');
-/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
+LOCK TABLES `user_has_roles` WRITE;
+/*!40000 ALTER TABLE `user_has_roles` DISABLE KEYS */;
+INSERT INTO `user_has_roles` VALUES (1,3,'2022-07-13 08:33:48','2022-07-13 08:33:48'),(3,1,'2022-07-13 19:18:50','2022-07-13 19:18:50'),(3,2,'2022-07-13 19:18:50','2022-07-13 19:18:50'),(3,3,'2022-07-13 17:02:26','2022-07-13 17:02:26'),(6,3,'2022-07-15 09:13:07','2022-07-15 09:13:07');
+/*!40000 ALTER TABLE `user_has_roles` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-19 18:13:19
+-- Dump completed on 2022-07-22 15:45:03
