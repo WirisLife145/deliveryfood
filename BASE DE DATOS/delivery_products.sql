@@ -37,7 +37,7 @@ CREATE TABLE `products` (
   UNIQUE KEY `name` (`name`),
   KEY `id_category` (`id_category`),
   CONSTRAINT `products_ibfk_1` FOREIGN KEY (`id_category`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,7 +46,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,'Helado de Chocolate ','Helado Artesanal sabor Chocolate con con chispas de chocolate ',45,'https://firebasestorage.googleapis.com/v0/b/delivery-e5e9e.appspot.com/o/image_1658217284771?alt=media&token=74a8dbe8-32c5-4c8b-af13-7ec8babb4e9b','https://firebasestorage.googleapis.com/v0/b/delivery-e5e9e.appspot.com/o/image_1658217285353?alt=media&token=74a8dbe8-32c5-4c8b-af13-7ec8babb4e9b','https://firebasestorage.googleapis.com/v0/b/delivery-e5e9e.appspot.com/o/image_1658217285576?alt=media&token=74a8dbe8-32c5-4c8b-af13-7ec8babb4e9b',2,'2022-07-19 07:54:45','2022-07-19 07:54:46'),(2,'Helado de Fresa ','3 bolas de Helado de fresa ',45,'https://firebasestorage.googleapis.com/v0/b/delivery-e5e9e.appspot.com/o/image_1658218743120?alt=media&token=74a8dbe8-32c5-4c8b-af13-7ec8babb4e9b','https://firebasestorage.googleapis.com/v0/b/delivery-e5e9e.appspot.com/o/image_1658218743475?alt=media&token=74a8dbe8-32c5-4c8b-af13-7ec8babb4e9b','https://firebasestorage.googleapis.com/v0/b/delivery-e5e9e.appspot.com/o/image_1658218743705?alt=media&token=74a8dbe8-32c5-4c8b-af13-7ec8babb4e9b',2,'2022-07-19 08:19:03','2022-07-19 08:19:04');
+INSERT INTO `products` VALUES (1,'Helado de Chocolate ','Helado Artesanal sabor Chocolate con con chispas de chocolate ',45,'https://firebasestorage.googleapis.com/v0/b/delivery-e5e9e.appspot.com/o/image_1658217284771?alt=media&token=74a8dbe8-32c5-4c8b-af13-7ec8babb4e9b','https://firebasestorage.googleapis.com/v0/b/delivery-e5e9e.appspot.com/o/image_1658217285353?alt=media&token=74a8dbe8-32c5-4c8b-af13-7ec8babb4e9b','https://firebasestorage.googleapis.com/v0/b/delivery-e5e9e.appspot.com/o/image_1658217285576?alt=media&token=74a8dbe8-32c5-4c8b-af13-7ec8babb4e9b',2,'2022-07-19 07:54:45','2022-07-19 07:54:46'),(2,'Helado de Fresa ','3 bolas de Helado de fresa ',45,'https://firebasestorage.googleapis.com/v0/b/delivery-e5e9e.appspot.com/o/image_1658218743120?alt=media&token=74a8dbe8-32c5-4c8b-af13-7ec8babb4e9b','https://firebasestorage.googleapis.com/v0/b/delivery-e5e9e.appspot.com/o/image_1658218743475?alt=media&token=74a8dbe8-32c5-4c8b-af13-7ec8babb4e9b','https://firebasestorage.googleapis.com/v0/b/delivery-e5e9e.appspot.com/o/image_1658218743705?alt=media&token=74a8dbe8-32c5-4c8b-af13-7ec8babb4e9b',2,'2022-07-19 08:19:03','2022-07-19 08:19:04'),(3,'Limonada','1L de bebida refrescante elaborada con agua natural o mineral, azúcar y jugo de limón',20,'https://firebasestorage.googleapis.com/v0/b/delivery-e5e9e.appspot.com/o/image_1658473667932?alt=media&token=9ea24317-87d8-45f0-b1c9-6222168cceff','https://firebasestorage.googleapis.com/v0/b/delivery-e5e9e.appspot.com/o/image_1658473669392?alt=media&token=9ea24317-87d8-45f0-b1c9-6222168cceff','https://firebasestorage.googleapis.com/v0/b/delivery-e5e9e.appspot.com/o/image_1658473669745?alt=media&token=9ea24317-87d8-45f0-b1c9-6222168cceff',1,'2022-07-22 07:07:48','2022-07-22 07:07:50'),(4,'Hamburguesas de Pollo','hamburguesas ',45,'https://firebasestorage.googleapis.com/v0/b/delivery-e5e9e.appspot.com/o/image_1658511834304?alt=media&token=4f09ad3f-5a74-4e53-bb88-ae47b5edc734','https://firebasestorage.googleapis.com/v0/b/delivery-e5e9e.appspot.com/o/image_1658511835081?alt=media&token=4f09ad3f-5a74-4e53-bb88-ae47b5edc734','https://firebasestorage.googleapis.com/v0/b/delivery-e5e9e.appspot.com/o/image_1658511835373?alt=media&token=4f09ad3f-5a74-4e53-bb88-ae47b5edc734',11,'2022-07-22 17:43:54','2022-07-22 17:43:56');
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -59,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-19 18:13:19
+-- Dump completed on 2022-07-22 15:45:03

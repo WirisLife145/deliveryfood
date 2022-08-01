@@ -1,5 +1,8 @@
 import 'package:delivery_flutter/src/models/user.dart';
+import 'package:delivery_flutter/src/pages/client/address/create/client_address_create_page.dart';
+import 'package:delivery_flutter/src/pages/client/address/list/client_address_list_page.dart';
 import 'package:delivery_flutter/src/pages/client/home/client_home_page.dart';
+import 'package:delivery_flutter/src/pages/client/orders/create/client_orders_create_page.dart';
 import 'package:delivery_flutter/src/pages/client/products/list/client_products_list_page.dart';
 import 'package:delivery_flutter/src/pages/client/profile/info/client_profile_info_page.dart';
 import 'package:delivery_flutter/src/pages/client/profile/update/client_profile_update_page.dart';
@@ -49,27 +52,30 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       initialRoute: userSession.id != null ? userSession.roles!.length > 1 ? '/roles' : '/client/home' : '/',
       getPages: [
-        GetPage(name: '/', page:()=>LoginPage()),
-        GetPage(name: '/register', page:()=>RegisterPage()),
-        GetPage(name: '/home', page:()=>HomePage()),
-        GetPage(name: '/roles', page:()=>RolesPage()),
-        GetPage(name: '/restaurant/orders/list', page:()=>RestaurantOrdersListPage()),
-        GetPage(name: '/restaurant/home', page:()=>RestaurantHomePage()),
-        GetPage(name: '/client/home', page:()=>ClientHomePage()),
-        GetPage(name: '/delivery/orders/list', page:()=>DeliveryOrdersListPage()),
-        GetPage(name: '/client/products/list', page:()=>ClientProductsListPage()),
-        GetPage(name: '/client/profile/info', page:()=>ClientProfileInfoPage()),
-        GetPage(name: '/client/profile/update', page:()=>ClientProfileUpdatePage()),
+        GetPage(name: '/', page:()=> LoginPage()),
+        GetPage(name: '/register', page:()=> RegisterPage()),
+        GetPage(name: '/home', page:()=> HomePage()),
+        GetPage(name: '/roles', page:()=> RolesPage()),
+        GetPage(name: '/restaurant/orders/list', page:()=> RestaurantOrdersListPage()),
+        GetPage(name: '/restaurant/home', page:()=> RestaurantHomePage()),
+        GetPage(name: '/client/home', page:()=> ClientHomePage()),
+        GetPage(name: '/delivery/orders/list', page:()=> DeliveryOrdersListPage()),
+        GetPage(name: '/client/products/list', page:()=> ClientProductsListPage()),
+        GetPage(name: '/client/profile/info', page:()=> ClientProfileInfoPage()),
+        GetPage(name: '/client/profile/update', page:()=> ClientProfileUpdatePage()),
+        GetPage(name: '/client/orders/create', page:()=> ClientOrdersCreatePage()),
+        GetPage(name: '/client/address/create', page:()=> ClientAddressCreatePage()),
+        GetPage(name: '/client/address/list', page:()=> ClientAddressListPage()),
 
       ],
       theme: ThemeData(
         primaryColor:Colors.deepOrange,
         colorScheme: ColorScheme(
-          primary:Colors.deepOrange,
+          primary: Colors.orange,
           secondary: Colors.deepOrangeAccent,
           brightness: Brightness.light,
           onBackground: Colors.grey,
-          onPrimary:Colors.grey,
+          onPrimary: Colors.grey,
           surface: Colors.grey,
           onSurface: Colors.grey,
           error: Colors.grey,

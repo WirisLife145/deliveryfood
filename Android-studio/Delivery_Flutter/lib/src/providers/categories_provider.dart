@@ -26,7 +26,7 @@ class CategoriesProvider extends GetConnect{
     );// Esperar Servidor
 
     if(response.statusCode ==401){
-      Get.snackbar('Peticion Denegada', 'Tu usuario no tiene permitido leer esta informacion');
+      Get.snackbar('Peticion Denegada', 'Tu usuario no puede ver esta informacion');
       return[];
     }
     List<Category> categories =Category.fromJsonList(response.body);

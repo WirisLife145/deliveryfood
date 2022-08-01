@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:delivery_flutter/src/models/response_api.dart';
 import 'package:delivery_flutter/src/providers/users_provider.dart';
 import 'package:flutter/material.dart';

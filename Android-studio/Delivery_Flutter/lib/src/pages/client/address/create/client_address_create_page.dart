@@ -1,9 +1,14 @@
-import 'package:delivery_flutter/src/pages/restaurant/categories/create/restaurant_categories_create_controller.dart';
+
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
-class RestaurantCategoriesCreatePage extends StatelessWidget {
-  RestaurantCategoriesCreateController con=Get.put(RestaurantCategoriesCreateController());
+import 'client_address_create_controller.dart';
+
+class ClientAddressCreatePage extends StatelessWidget{
+
+  ClientAddressCreateController con = Get.put(ClientAddressCreateController());
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +18,21 @@ class RestaurantCategoriesCreatePage extends StatelessWidget {
         children: [
           _backgroundCover(context),
           _boxForm(context),
-          _textNewCategory(context),
-
+          _textNewAddress(context),
+          _iconBack()
         ],
+      ),
+    );
+  }
+
+  Widget _iconBack(){
+    return SafeArea(
+      child: Container(
+        margin: EdgeInsets.only(left: 15),
+        child: IconButton(
+            onPressed: () => Get.back(),
+            icon: Icon(Icons.arrow_back_ios, size: 30,)
+        ),
       ),
     );
   }
@@ -50,45 +67,59 @@ class RestaurantCategoriesCreatePage extends StatelessWidget {
         child: Column(
           children: [
             _textYourInfo(),
-            _textFieldName(),
-            _textFieldDescription(),
+            _textFieldAddress(),
+            _textFieldneighborhood(),
+            _textFieldRefPoint(context),
+            SizedBox(height: 20,),
             _buttonCreate(context)
           ],
-        ),
-      )
-      ,
-    );
-  }
-
-
-  Widget _textFieldName(){
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 40),
-      child: TextField(
-        controller: con.nameController,
-        keyboardType: TextInputType.text,
-        decoration: InputDecoration(
-            hintText: 'Nombre',
-            prefixIcon: Icon(Icons.category)
         ),
       ),
     );
   }
 
-  Widget _textFieldDescription(){
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 40 ,vertical:30 ),
-      child: TextField(
-         controller:con.descriptionController,
-        keyboardType: TextInputType.text,
-        maxLines: 4,
-        decoration: InputDecoration(
-            hintText: 'Descripción',
-            prefixIcon: Container(
-                margin: EdgeInsets.only(bottom: 50),
-                child: Icon(Icons.description))
-        ),
 
+  Widget _textFieldAddress(){
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 40),
+      child: TextField(
+        controller: con.addressController,
+        keyboardType: TextInputType.text,
+        decoration: InputDecoration(
+            hintText: 'Dirección',
+            prefixIcon: Icon(Icons.location_on)
+        ),
+      ),
+    );
+  }
+
+  Widget _textFieldneighborhood(){
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 40),
+      child: TextField(
+        controller: con.neighborhoodController,
+        keyboardType: TextInputType.text,
+        decoration: InputDecoration(
+            hintText: 'Colonia',
+            prefixIcon: Icon(Icons.location_city)
+        ),
+      ),
+    );
+  }
+
+  Widget _textFieldRefPoint(BuildContext context){
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 40),
+      child: TextField(
+        onTap: () => con.openGoogleMaps(context),
+        controller: con.neighborhoodController,
+        autofocus: false,
+        focusNode: AlwaysDisabledFocusedNode(),
+        keyboardType: TextInputType.text,
+        decoration: InputDecoration(
+            hintText: 'Punto de Referencia',
+            prefixIcon: Icon(Icons.map)
+        ),
       ),
     );
   }
@@ -100,13 +131,13 @@ class RestaurantCategoriesCreatePage extends StatelessWidget {
       width: double.infinity,
       margin: EdgeInsets.symmetric(horizontal: 40,vertical: 10),
       child: ElevatedButton(
-          onPressed: () => con.createCategory() ,
+          onPressed: () {},
           style: ElevatedButton.styleFrom(
               padding: EdgeInsets.symmetric(vertical: 15)
 
           ) ,
           child: Text(
-            'CREAR CATEGORIA',
+            'Crear Direccion',
             style: TextStyle(
                 color: Colors.black
             ),
@@ -116,7 +147,7 @@ class RestaurantCategoriesCreatePage extends StatelessWidget {
   }
 
 
-  Widget _textNewCategory(BuildContext context){
+  Widget _textNewAddress(BuildContext context){
 
     return SafeArea(
       child: Container(
@@ -124,12 +155,12 @@ class RestaurantCategoriesCreatePage extends StatelessWidget {
         alignment:Alignment.topCenter ,
         child: Column(
           children: [
-            Icon(Icons.category,size: 100,color:Colors.white ,),
-            Text('Nueva Categoria',
+            Icon(Icons.location_on,size: 100,color:Colors.white ,),
+            Text('Nueva Direccion',
               style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-                fontSize: 23
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                  fontSize: 23
 
 
               ),
@@ -146,11 +177,17 @@ class RestaurantCategoriesCreatePage extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(top: 40,bottom: 25),
       child: Text(
-        'INGRESA TU INFORMACIÓN',
+        'INGRESA TU INFORMACION',
         style: TextStyle(
             color: Colors.black
         ),
       ),
     );
   }
+  
+}
+
+class AlwaysDisabledFocusedNode extends FocusNode{
+  @override
+  bool get hasFocus => false;
 }

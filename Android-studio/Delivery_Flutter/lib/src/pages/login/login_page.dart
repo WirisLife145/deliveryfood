@@ -39,7 +39,7 @@ class LoginPage extends StatelessWidget {
 
   Widget _textAppName(){
     return Text(
-        'DELIVERY',
+        'DELIVERY APP',
       style: TextStyle(
         fontSize: 20,
         fontWeight: FontWeight.bold,
@@ -136,7 +136,7 @@ class LoginPage extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(top: 40,bottom: 45),
       child: Text(
-        'INGRESA TU INFORMACION',
+        'INGRESA TU INFORMACIÓN',
         style: TextStyle(
           color: Colors.black
 
@@ -186,7 +186,7 @@ class LoginPage extends StatelessWidget {
         margin: EdgeInsets.only(top: 20, bottom: 15),
         alignment: Alignment.center,
         child: Image.asset(
-          'assets/img/delivery.png',
+          'assets/img/delivery.jpeg',
           width: 180,
           height: 180,
 

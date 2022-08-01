@@ -52,7 +52,7 @@ categoriesRoutes(app);
 productRoutes(app, upload);
 
 
-server.listen(3000, '192.168.1.71' || 'localhost', function() {
+server.listen(3000, '192.168.100.131' || 'localhost', function() {
     console.log('Aplicacion de NodeJS ' + port + ' Iniciada...')
 });
 

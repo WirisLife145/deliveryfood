@@ -21,8 +21,19 @@ class ClientProductsListPage extends StatelessWidget {
       length: con.categories.length,
       child: Scaffold(
         appBar: PreferredSize(
-          preferredSize:Size.fromHeight(70),
+          preferredSize:Size.fromHeight(110),
           child:AppBar(
+            flexibleSpace: Container(
+              margin: EdgeInsets.only(top: 15),
+              alignment: Alignment.topCenter,
+              child: Wrap(
+                direction: Axis.horizontal,
+                children: [
+                  _textFieldSearch(context),
+                  _iconShoppingBag()
+                ],
+              ),
+            ),
             bottom:TabBar(
               isScrollable: true,
               indicatorColor: Colors.deepOrange,
@@ -64,6 +75,54 @@ class ClientProductsListPage extends StatelessWidget {
           )
       ),
     ));
+  }
+
+  Widget _iconShoppingBag(){
+    return SafeArea(
+      child: Container(
+        margin: EdgeInsets.only(left: 10),
+        child: IconButton(
+          onPressed: ()=> con.goToOrderCreate(),
+          icon: Icon(
+              Icons.shopping_bag_outlined,
+            size: 35,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _textFieldSearch(BuildContext context){
+    return SafeArea(
+      child: Container(
+        width: MediaQuery.of(context).size.width * 0.75,
+        child: TextField(
+          decoration: InputDecoration(
+            hintText: 'Buscar Producto',
+            suffixIcon: Icon(Icons.search, color: Colors.grey),
+            hintStyle: TextStyle(
+              fontSize: 17,
+              color: Colors.black12
+            ),
+            fillColor: Colors.white,
+            filled: true,
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+              borderSide: BorderSide(
+                color: Colors.grey
+              )
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+              borderSide: BorderSide(
+                color: Colors.grey
+              )
+            ),
+          contentPadding:  EdgeInsets.all(15)
+          ),
+        ),
+      ),
+    );
   }
 
   Widget _cardProduct(BuildContext context, Product product) {
