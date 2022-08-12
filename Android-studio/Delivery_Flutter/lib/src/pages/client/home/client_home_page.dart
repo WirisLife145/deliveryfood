@@ -1,4 +1,5 @@
 import 'package:delivery_flutter/src/pages/client/home/client_home_controller.dart';
+import 'package:delivery_flutter/src/pages/client/orders/list/client_orders_list_page.dart';
 import 'package:delivery_flutter/src/pages/client/products/list/client_products_list_controller.dart';
 import 'package:delivery_flutter/src/pages/client/products/list/client_products_list_page.dart';
 import 'package:delivery_flutter/src/pages/client/profile/info/client_profile_info_page.dart';
@@ -7,7 +8,7 @@ import 'package:get/get.dart';
 
 import 'package:delivery_flutter/src/utils/custom_animated_bottom_bar.dart';
 import 'package:delivery_flutter/src/pages/restaurant/orders/list/restaurant_orders_list_page.dart';
-import 'package:delivery_flutter/src/pages/delivery/orders/delivery_orders_list.dart';
+import 'package:delivery_flutter/src/pages/delivery/orders/list/delivery_orders_list_page.dart';
 
 
 
@@ -23,7 +24,7 @@ class ClientHomePage extends StatelessWidget {
           index: con.indexTab.value,
           children: [
             ClientProductsListPage(),
-            DeliveryOrdersListPage(),
+            ClientOrdersListPage(),
             ClientProfileInfoPage()
           ],
         ))
@@ -48,7 +49,7 @@ class ClientHomePage extends StatelessWidget {
         ),
         BottomNavyBarItem(
             icon: Icon(Icons.list),
-            title: Text('Mis pedidos'),
+            title: Text('Pedidos'),
             activeColor: Colors.white,
             inactiveColor: Colors.black
         ),

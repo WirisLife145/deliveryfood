@@ -4,6 +4,15 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<string>Necesito permisos para acceder a la galeria de fotos</string>
+    <key>NSCameraUsageDescription</key>
+    <string>Necesito permisos para acceder a la camara</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Necesito permisos para acceder al microfono del celular</string>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+    <string>tel</string>
+    </array>
 	<key>CFBundleDisplayName</key>
 	<string>Delivery Flutter</string>
 	<key>CFBundleExecutable</key>

@@ -123,7 +123,7 @@ class LoginPage extends StatelessWidget {
 
           ) ,
           child: Text(
-            'LOGIN',
+            'Iniciar Sesión',
             style: TextStyle(
               color: Colors.black
             ),

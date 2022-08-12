@@ -13,16 +13,16 @@ class NoDataWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(
-              'assets/img/cero-items.png',
-              height: 150,
-              width: 150,
+            'assets/img/cero-items.png',
+            height: 150,
+            width: 150,
           ),
           SizedBox(height: 15),
           Text(
             text,
             style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold
+                fontSize: 18,
+                fontWeight: FontWeight.bold
             ),
           )
         ],
@@ -30,3 +30,4 @@ class NoDataWidget extends StatelessWidget {
     );
   }
 }
+

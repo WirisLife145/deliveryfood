@@ -42,7 +42,7 @@ class ClientAddressMapController extends GetxController{
       addressName.value = '$direction #$street, $city, $department';
       addressLatLng = LatLng(lat, lng);
 
-      Fluttertoast.showToast(msg: '$addressLatLng?.latitude ?? 0');
+      Fluttertoast.showToast(msg: '$addressName');
     }
 
   }

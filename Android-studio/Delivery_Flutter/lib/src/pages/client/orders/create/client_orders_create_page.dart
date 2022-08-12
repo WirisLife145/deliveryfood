@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
-class ClientOrdersCreatePage extends StatelessWidget{
+class ClientOrdersCreatePage extends StatelessWidget {
 
   ClientOrdersCreateController con = Get.put(ClientOrdersCreateController());
 
@@ -19,50 +19,54 @@ class ClientOrdersCreatePage extends StatelessWidget{
       ),
       appBar: AppBar(
         iconTheme: IconThemeData(
-          color: Colors.black87
+            color: Colors.black
         ),
         title: Text(
-            'Mi orden',
+          'Mi Orden',
           style: TextStyle(
-            color: Colors.black87
+              color: Colors.black
           ),
         ),
       ),
       body: con.selectedProducts.length > 0
-      ? ListView(
-        children: con.selectedProducts.map((Product product){
+          ? ListView(
+        children: con.selectedProducts.map((Product product) {
           return _cardProduct(product);
         }).toList(),
       )
-      : NoDataWidget(text: 'No hay ningun producto aqui'),
+          : Center(
+          child:
+          NoDataWidget(text: 'No hay ningun producto agregado aun')
+      ),
     ));
   }
 
-  Widget _totalToPay(BuildContext context){
+  Widget _totalToPay(BuildContext context) {
     return Column(
       children: [
-        Divider(height: 1, color: Colors.grey[400]),
+        Divider(height: 1, color: Colors.grey[300]),
         Container(
           margin: EdgeInsets.only(left: 20, top: 25),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                  'Total: \$${con.total.value}',
+                'TOTAL: \$${con.total.value}',
                 style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18
+                    fontWeight: FontWeight.bold,
+                    fontSize: 17
                 ),
               ),
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 30),
+
                 child: ElevatedButton(
                     onPressed: () => con.goToAddressList(),
                     style: ElevatedButton.styleFrom(
                         padding: EdgeInsets.all(15)
                     ),
                     child: Text(
-                      'Confirmar Orden',
+                      'CONFIRMAR ORDER',
                       style: TextStyle(
                           color: Colors.black
                       ),
@@ -73,11 +77,11 @@ class ClientOrdersCreatePage extends StatelessWidget{
           ),
         )
 
-      ]
+      ],
     );
   }
 
-  Widget _cardProduct(Product product){
+  Widget _cardProduct(Product product) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Row(
@@ -88,12 +92,12 @@ class ClientOrdersCreatePage extends StatelessWidget{
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                product.name??'',
+                product.name ?? '',
                 style: TextStyle(
-                  fontWeight: FontWeight.bold
+                    fontWeight: FontWeight.bold
                 ),
               ),
-              SizedBox(height: 7,),
+              SizedBox(height: 7),
               _buttonsAddOrRemove(product)
             ],
           ),
@@ -101,7 +105,7 @@ class ClientOrdersCreatePage extends StatelessWidget{
           Column(
             children: [
               _textPrice(product),
-              _iconDelete(product),
+              _iconDelete(product)
             ],
           )
         ],
@@ -109,49 +113,50 @@ class ClientOrdersCreatePage extends StatelessWidget{
     );
   }
 
-  Widget _iconDelete(Product product){
+  Widget _iconDelete(Product product) {
     return IconButton(
         onPressed: () => con.deleteItem(product),
-      icon: Icon(
-        Icons.delete,
-        color: Colors.red,
-      ),
+        icon: Icon(
+          Icons.delete,
+          color: Colors.red,
+        )
     );
   }
 
-  Widget _textPrice(Product product){
+  Widget _textPrice(Product product) {
     return Container(
-      margin: EdgeInsets.only(top:10),
+      margin: EdgeInsets.only(top: 10),
       child: Text(
-        '\$${product.price! * product.quantity!}',
+        '\$${ product.price! * product.quantity!}',
         style: TextStyle(
-          color: Colors.grey,
-          fontWeight: FontWeight.bold
+            color: Colors.grey,
+            fontWeight: FontWeight.bold
         ),
       ),
     );
   }
 
-  Widget _buttonsAddOrRemove(Product product){
+  Widget _buttonsAddOrRemove(Product product) {
     return Row(
       children: [
         GestureDetector(
-          onTap: ()=> con.removeItem(product),
+          onTap: () => con.removeItem(product),
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 12, vertical: 7),
             decoration: BoxDecoration(
                 color: Colors.grey[200],
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(8),
-                bottomLeft: Radius.circular(8),
-              )
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(8),
+                  bottomLeft: Radius.circular(8),
+                )
             ),
+
             child: Text('-'),
           ),
         ),
         Container(
           padding: EdgeInsets.symmetric(horizontal: 12, vertical: 7),
-          color: Colors.grey[150],
+          color: Colors.grey[200],
           child: Text('${product.quantity ?? 0}'),
         ),
         GestureDetector(
@@ -172,24 +177,22 @@ class ClientOrdersCreatePage extends StatelessWidget{
     );
   }
 
-  Widget _imageProduct(Product product){
+  Widget _imageProduct(Product product) {
     return Container(
       height: 70,
       width: 70,
+      // padding: EdgeInsets.all(2),
       child: ClipRRect(
-        borderRadius:BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(12),
         child: FadeInImage(
-          image: product.image1!=null
+          image: product.image1 != null
               ? NetworkImage(product.image1!)
-              :AssetImage('assets/img/no-image.png') as ImageProvider ,
+              : AssetImage('assets/img/no-image.png') as ImageProvider,
           fit: BoxFit.cover,
-          fadeInDuration: Duration(milliseconds: 10),
-          placeholder:AssetImage('assets/img/no-image.png'),
-
-
+          fadeInDuration: Duration(milliseconds: 50),
+          placeholder:  AssetImage('assets/img/no-image.png'),
         ),
       ),
     );
   }
-
 }

@@ -25,6 +25,23 @@ class UsersProvider extends GetConnect{
     return response;
   }
 
+  Future<List<User>>findDeliveryMen() async{
+    Response response=await get(
+        '$url/findDeliveryMen',
+        headers: {
+          'Content-Type':'application/json',
+          'Authorization': userSession.sessionToken ??''
+        }
+    );// Esperar Servidor
+
+    if(response.statusCode ==401){
+      Get.snackbar('Peticion Denegada', 'Tu usuario no puede ver esta informacion');
+      return[];
+    }
+    List<User> users = User.fromJsonList(response.body);
+    return users;
+  }
+
 //Actualizar sin  Imagen
   Future<ResponseApi>update(User user) async{
     Response response=await put(

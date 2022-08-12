@@ -1,9 +1,6 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-
 import 'client_address_create_controller.dart';
 
 class ClientAddressCreatePage extends StatelessWidget{
@@ -12,7 +9,6 @@ class ClientAddressCreatePage extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: Stack(//POSICIONAR ELEMENTOS UNO ENCIMA DEL OTRO
         children: [
@@ -60,9 +56,7 @@ class ClientAddressCreatePage extends StatelessWidget{
                 offset: Offset(0,0.75)
             )
           ]
-
       ),
-
       child: SingleChildScrollView(
         child: Column(
           children: [
@@ -70,7 +64,7 @@ class ClientAddressCreatePage extends StatelessWidget{
             _textFieldAddress(),
             _textFieldneighborhood(),
             _textFieldRefPoint(context),
-            SizedBox(height: 20,),
+            SizedBox(height: 20),
             _buttonCreate(context)
           ],
         ),
@@ -112,12 +106,12 @@ class ClientAddressCreatePage extends StatelessWidget{
       margin: EdgeInsets.symmetric(horizontal: 40),
       child: TextField(
         onTap: () => con.openGoogleMaps(context),
-        controller: con.neighborhoodController,
+        controller: con.refPointController,
         autofocus: false,
-        focusNode: AlwaysDisabledFocusedNode(),
+        focusNode: AlwaysDisabledFocusNode(),
         keyboardType: TextInputType.text,
         decoration: InputDecoration(
-            hintText: 'Punto de Referencia',
+            hintText: 'Punto de referencia',
             prefixIcon: Icon(Icons.map)
         ),
       ),
@@ -131,11 +125,12 @@ class ClientAddressCreatePage extends StatelessWidget{
       width: double.infinity,
       margin: EdgeInsets.symmetric(horizontal: 40,vertical: 10),
       child: ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            con.createAddress();
+          },
           style: ElevatedButton.styleFrom(
               padding: EdgeInsets.symmetric(vertical: 15)
-
-          ) ,
+          ),
           child: Text(
             'Crear Direccion',
             style: TextStyle(
@@ -148,29 +143,23 @@ class ClientAddressCreatePage extends StatelessWidget{
 
 
   Widget _textNewAddress(BuildContext context){
-
     return SafeArea(
       child: Container(
         margin: EdgeInsets.only(top: 25),
         alignment:Alignment.topCenter ,
         child: Column(
           children: [
-            Icon(Icons.location_on,size: 100,color:Colors.white ,),
+            Icon(Icons.location_on,size: 100),
             Text('Nueva Direccion',
               style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
                   fontSize: 23
-
-
               ),
-
             ),
           ],
         ),
       ),
     );
-
   }
 
   Widget _textYourInfo(){
@@ -187,7 +176,7 @@ class ClientAddressCreatePage extends StatelessWidget{
   
 }
 
-class AlwaysDisabledFocusedNode extends FocusNode{
+class AlwaysDisabledFocusNode extends FocusNode {
   @override
   bool get hasFocus => false;
 }

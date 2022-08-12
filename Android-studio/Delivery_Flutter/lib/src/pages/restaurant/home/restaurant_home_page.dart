@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 
 import 'package:delivery_flutter/src/utils/custom_animated_bottom_bar.dart';
 import 'package:delivery_flutter/src/pages/restaurant/orders/list/restaurant_orders_list_page.dart';
-import 'package:delivery_flutter/src/pages/delivery/orders/delivery_orders_list.dart';
+import 'package:delivery_flutter/src/pages/delivery/orders/list/delivery_orders_list_page.dart';
 
 
 
